@@ -1,5 +1,6 @@
 package com.FlipkartAffiliates.API;
 
+import com.FlipkartAffiliates.util.WSConstants;
 import com.google.gson.JsonObject;
 
 
@@ -13,15 +14,18 @@ import retrofit2.http.Url;
  */
 
 public interface RestApi {
-
-    @GET("/affiliate/api/affliatek.json")
+    @Headers({
+            "Fk-Affiliate-Id:ramendu98",
+            "Fk-Affiliate-Token:acbfa63280704742bdcb1c3d30de0b9e"
+    })
+    @GET("/affiliate/api/ramendu98.json")
     Call<JsonObject> GetProductList();
     //void GetProductList(Callback<JsonObject> callback);
 
 
     @Headers({
-            "Fk-Affiliate-Id:affliatek",
-            "Fk-Affiliate-Token:98ccd7d7aa0c4b59a3f831d1db50f24e"
+            WSConstants.AFFILIATE_ID +":"+WSConstants.AFFILIATE_ID_VALUE,
+            WSConstants.AFFILIATE_TOKEN +":"+WSConstants.AFFILIATE_TOKEN_VALUE,
     })
     @GET
     Call<JsonObject> GetCategoryList(@Url String url);
